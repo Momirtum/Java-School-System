@@ -24,7 +24,7 @@ EXPOSE 8080
 
 # Health check configuration
 HEALTHCHECK --interval=30s --timeout=3s --start-period=120s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-8080}/actuator/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8080}/api/students || exit 1
 
 # Run the application
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"] 
