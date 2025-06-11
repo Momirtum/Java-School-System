@@ -1,45 +1,30 @@
 # Build stage
-FROM maven:3.8-openjdk-8 AS build
+FROM maven:3.8.4-openjdk-8-slim AS build
 WORKDIR /app
-
-# Configure Maven to use multiple mirrors and increase timeouts
-COPY settings.xml /root/.m2/settings.xml
-
-# Copy pom.xml first to cache dependencies
 COPY pom.xml .
-
-# Enable Maven debug logging and show dependency tree
-RUN mvn dependency:tree -Dverbose && \
-    mvn dependency:go-offline -B -X
-
-# Copy source code
 COPY src ./src
-
-# Build with detailed error reporting
-RUN mvn clean package -DskipTests -U --batch-mode \
-    -Dmaven.wagon.http.pool=false \
-    -Dmaven.wagon.http.readTimeout=60000 \
-    -Dmaven.wagon.http.connectionTimeout=60000 \
-    -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN \
-    -Dorg.slf4j.simpleLogger.showDateTime=true \
-    -Dorg.slf4j.simpleLogger.dateTimeFormat=HH:mm:ss.SSS \
-    -Dorg.slf4j.simpleLogger.showThreadName=true \
-    -Dorg.slf4j.simpleLogger.showLogName=true \
-    -Dorg.slf4j.simpleLogger.defaultLogLevel=DEBUG \
-    -Dmaven.test.failure.ignore=true \
-    -Dmaven.compiler.failOnError=true \
-    -Dmaven.compiler.showWarnings=true \
-    -Dmaven.compiler.showDeprecation=true \
-    -Dmaven.compiler.verbose=true
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM openjdk:8-jre-slim
 WORKDIR /app
+
+# Install curl for healthcheck
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Copy the jar from build stage
 COPY --from=build /app/target/*.jar app.jar
+
+# Set environment variables
+ENV JAVA_OPTS="-Xms512m -Xmx1024m -XX:+UseG1GC"
+ENV SPRING_PROFILES_ACTIVE="prod"
+
+# Expose port
 EXPOSE 8080
 
-# Add healthcheck
-HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:8080/actuator/health || exit 1
+# Health check configuration
+HEALTHCHECK --interval=30s --timeout=3s --start-period=120s --retries=3 \
+    CMD curl -f http://localhost:${PORT:-8080}/actuator/health || exit 1
 
-ENTRYPOINT ["java", "-jar", "app.jar"] 
+# Run the application
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"] 
