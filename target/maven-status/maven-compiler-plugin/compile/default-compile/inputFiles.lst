@@ -1,12 +1,11 @@
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\entity\Course.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\exception\DuplicateResourceException.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\entity\Student.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\repository\CourseRepository.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\SchoolManagementApplication.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\dto\CourseDTO.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\dto\StudentDTO.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\repository\StudentRepository.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\controller\StudentController.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\exception\ResourceNotFoundException.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\service\StudentService.java
-C:\Users\Emirc\OneDrive\Masaüstü\Java-School-System\src\main\java\com\school\config\StudentsHealthIndicator.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\dto\CourseDTO.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\exception\ResourceNotFoundException.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\entity\Student.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\entity\Course.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\repository\StudentRepository.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\dto\StudentDTO.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\exception\DuplicateResourceException.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\controller\StudentController.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\repository\CourseRepository.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\service\StudentService.java
+C:\Users\Emirc\OneDrive\Masaüstü\real java test\src\main\java\com\school\SchoolManagementApplication.java
