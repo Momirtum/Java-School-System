@@ -1,0 +1,12 @@
+com\school\exception\DuplicateResourceException.class
+com\school\controller\StudentController.class
+com\school\repository\StudentRepository.class
+com\school\repository\CourseRepository.class
+com\school\SchoolManagementApplication.class
+com\school\service\StudentService.class
+com\school\config\StudentsHealthIndicator.class
+com\school\dto\StudentDTO.class
+com\school\entity\Student.class
+com\school\dto\CourseDTO.class
+com\school\entity\Course.class
+com\school\exception\ResourceNotFoundException.class
